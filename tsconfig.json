@@ -1,0 +1,34 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "target": "es2019",
+    "noImplicitAny": true,
+    // "strict": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "sourceMap": true,
+    "outDir": "dist",
+    "baseUrl": "./",
+    "paths": {
+      // "*": ["node_modules/*", "src/types/*"], // Adjust as needed
+      // "@models/*": ["src/models/*"],
+      // "@controllers/*": ["src/controllers/*"],
+      // "@services/*": ["src/services/*"],
+      // Add other paths as needed
+    },
+    "forceConsistentCasingInFileNames": true,
+    "noEmitOnError": true,
+    // "strictNullChecks": true,
+    // "strictFunctionTypes": true,
+    // "strictPropertyInitialization": true,
+    // "noUnusedLocals": true,
+    // "noUnusedParameters": true,
+    // "noImplicitReturns": true,
+    // "noFallthroughCasesInSwitch": true,
+    // "experimentalDecorators": true, // If using decorators
+    // "emitDecoratorMetadata": true // If using decorators
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist", "**/*.spec.ts"]
+}

@@ -1,0 +1,11 @@
+node_modules
+/uploads/images
+/uploads/docs
+.DS_Store
+```
+*.env
+```
+*.log
+```
+dist/
+plans.json
