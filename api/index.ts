@@ -25,8 +25,8 @@ app.use(
     origin: [
       "http://localhost:3200",
       "http://localhost:3600",
-      "https://rome-related.nz",
-      "https://admin.rome-related.nz",
+      "https://romerelated.nz",
+      "https://admin.romerelated.nz",
     ],
     credentials: true,
     allowedHeaders: [
