@@ -70,7 +70,6 @@ class ProductController {
     const { id } = req.params;
 
     const product = await productService.findById(id);
-
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
       metadata: {
@@ -90,7 +89,6 @@ class ProductController {
           quantity: 1,
         },
       ],
-      expires_at: Date.now() + 1000 * 60 * 5, // 5 minutes
       shipping_address_collection: {
         allowed_countries: STRIPE_COUNTRY_CODES,
       },

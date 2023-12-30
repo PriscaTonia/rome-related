@@ -1,5 +1,4 @@
 import "express-async-errors";
-// import os from "os";
 import express, { NextFunction, Request, Response } from "express";
 import morgan from "morgan";
 import compression from "compression";
