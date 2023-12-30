@@ -45,8 +45,9 @@ app.use(
 // Other Middleware
 app.use(compression());
 app.use(morgan("dev"));
-app.use(express.static("public"));
-app.use("/api/v1/static", express.static("uploads"));
+// disabled for vercel
+// app.use(express.static("public"));
+// app.use("/api/v1/static", express.static("uploads"));
 
 app.post("/api/v1/webhooks/stripe", express.raw({ type: "application/json" }));
 
