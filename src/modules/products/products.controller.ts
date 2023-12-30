@@ -96,8 +96,8 @@ class ProductController {
       },
       phone_number_collection: { enabled: true },
       mode: "payment",
-      success_url: `http://localhost:3200/checkout-success`,
-      cancel_url: `http://localhost:3200`,
+      success_url: `${env.CLIENT_URL}/checkout-success`,
+      cancel_url: `${env.CLIENT_URL}`,
     });
 
     res.send(response("Checkout created successfully", { link: session.url }));

@@ -60,12 +60,12 @@ const production: Ienv = {
   STRIPE_ENDPOINT_SECRET_KEY: process.env.STRIPE_LIVE_ENDPOINT_SECRET_KEY,
   authCookieConfig: {
     httpOnly: true,
-    domain: "rome-related.co.nz",
+    domain: "rome-related.nz",
     secure: true,
     sameSite: "strict",
   },
-  CLIENT_URL: "https://rome-related.co.nz",
-  ADMIN_URL: "https://admin.rome-related.co.nz",
+  CLIENT_URL: "https://rome-related.nz",
+  ADMIN_URL: "https://admin.rome-related.nz",
   CLOUDINARY_FOLDER: "rome-related_prod",
   ...common,
 };
