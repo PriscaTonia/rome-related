@@ -10,8 +10,7 @@ export const adminAuth = async function (
   next: NextFunction
 ) {
   const authToken =
-    req.cookies?.["rome-related-admin-token"] ||
-    req.headers?.["rome-related-admin-token"];
+    req.cookies?.["rr-adm-token"] || req.headers?.["rr-adm-token"];
   if (!authToken) throw new UnAuthorizedError();
   try {
     const decoded = adminsService.verifyAuthToken(authToken);

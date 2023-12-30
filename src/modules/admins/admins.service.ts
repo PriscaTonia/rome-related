@@ -2,9 +2,10 @@ import Admin from "./admins.model";
 import { IAdmin } from "../admins/admins.types";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import { Document, DocumentQuery, Query } from "mongoose";
 
 class AdminService {
-  getAllAdmins() {
+  getAllAdmins(): DocumentQuery<IAdmin[], Document<IAdmin[]>> {
     return Admin.find();
   }
 
@@ -16,11 +17,18 @@ class AdminService {
     return Admin.findById(id);
   }
 
-  findByEmail(email: string) {
+  findByEmail(
+    email: string
+  ): Query<(IAdmin & Document) | null, IAdmin & Document> {
     return Admin.findOne({ email });
   }
 
   update(id: string, updateQuery: { [key: string]: any }) {
+    if (updateQuery.password) {
+      const salt = bcrypt.genSaltSync(10);
+      const hashed = bcrypt.hashSync(updateQuery.password, salt);
+      updateQuery.password = hashed;
+    }
     return Admin.findByIdAndUpdate(id, updateQuery, { new: true });
   }
 

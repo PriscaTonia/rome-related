@@ -16,9 +16,9 @@ const categorySchema = new Schema<ICategory>(
       required: true,
       trim: true,
     },
-    isDisabled: {
+    isEnabled: {
       type: Boolean,
-      default: false,
+      default: true,
     },
   },
   {

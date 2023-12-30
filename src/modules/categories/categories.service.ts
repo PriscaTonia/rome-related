@@ -29,13 +29,12 @@ class CategoryService {
   }
 
   // disable(id: string) {
-  //   return Category.findByIdAndUpdate(id, { isDisabled: true }, { new: true });
+  //   return Category.findByIdAndUpdate(id, { isEnabled: true }, { new: true });
   // }
 
-  // don't want to delete categories
-  // delete(id: string) {
-  //   return Category.findByIdAndDelete(id);
-  // }
+  delete(id: string) {
+    return Category.findByIdAndDelete(id);
+  }
 }
 
 export default new CategoryService();

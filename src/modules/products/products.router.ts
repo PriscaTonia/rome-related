@@ -4,9 +4,20 @@ import validateById from "../../middlewares/validateById";
 import { adminAuth } from "../../middlewares/admin-auth";
 import productController from "./products.controller";
 import validator from "../../middlewares/validator";
-import { addProductValSchema } from "./products.validators";
+import {
+  addProductValSchema,
+  updateProductValSchema,
+} from "./products.validators";
 
 router.get("/products/search", productController.findProducts);
+
+router.get("/products", productController.getProducts);
+
+router.get("/products/id/:id", productController.getProductById);
+
+router.get("/products/:slug", productController.getProductDetailsBySlug);
+
+router.post("/products/checkout/:id", productController.createCheckoutSession);
 
 router.post(
   "/products",
@@ -16,18 +27,13 @@ router.post(
 
 router.put(
   "/products/:id",
-  [adminAuth, validateById, validator(addProductValSchema)],
+  [adminAuth, validateById(), validator(updateProductValSchema)],
   productController.update
 );
 
 router.delete(
   "/products/:id",
-  [adminAuth, validateById],
+  [adminAuth, validateById()],
   productController.delete
 );
-
-router.get("/products", productController.getProducts);
-
-router.get("/products/:slug", productController.getProductDetailsBySlug);
-
 export default router;

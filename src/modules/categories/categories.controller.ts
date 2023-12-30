@@ -8,6 +8,8 @@ import { IReqAdmin } from "../admins/admins.types";
 import { slugify } from "../../utils/slugify";
 
 import { IReqCategory } from "./categories.types";
+import productsService from "../products/products.service";
+import { BadRequestError } from "../../config/errors";
 
 class CategoryController {
   async create(req: Request & { admin: IReqAdmin }, res: Response) {
@@ -31,6 +33,12 @@ class CategoryController {
     res.send(response("Category updated successfully", updatedCategory));
   }
 
+  async getCategoryById(req: Request, res: Response) {
+    const { id } = req.params;
+    const category = await categoryService.findById(id)
+    res.send(response("Category retrieved successfully", category));
+  }
+
   async getCategoryBySlug(req: Request, res: Response) {
     const { slug } = req.params;
     const category = await categoryService.findBySlug(slug);
@@ -44,12 +52,20 @@ class CategoryController {
     res.send(response("Categories retrieved successfully", categories));
   }
 
-  // async delete(req: Request & { admin: IReqAdmin }, res: Response) {
-  //   const { id } = req.params;
-  //   await categoryService.delete(id);
+  async delete(req: Request & { admin: IReqAdmin }, res: Response) {
+    const { id } = req.params;
+    console.log({ id });
+    const existingProducts = await productsService.checkExistingCategory(id);
+    console.log({ existingProducts });
+    if (existingProducts.length > 0) {
+      throw new BadRequestError(
+        "This Category has associated products. Please delete them first"
+      );
+    }
+    await categoryService.delete(id);
 
-  //   res.send(response("Category deleted successfully"));
-  // }
+    res.send(response("Category deleted successfully"));
+  }
 }
 
 export default new CategoryController();

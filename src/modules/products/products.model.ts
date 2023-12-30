@@ -11,9 +11,13 @@ const productSchema = new Schema<IProduct>(
       maxlength: 255,
       trim: true,
     },
+    isSoldOut: {
+      type: Boolean,
+      default: false,
+    },
     category: {
       type: Schema.Types.ObjectId,
-      ref: "category",
+      ref: "categories",
       required: true,
     },
     title: {
@@ -41,6 +45,11 @@ const productSchema = new Schema<IProduct>(
     imageUrls: {
       type: [String],
       default: [],
+    },
+    publishStatus: {
+      type: String,
+      enum: ["published", "draft"],
+      default: "published",
     },
   },
   {

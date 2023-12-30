@@ -43,11 +43,10 @@ class MediaController {
 
   async deleteByUrl(req: Request, res: Response) {
     const url = req.body.url;
-    console.log({ url });
+    // console.log({ url });
     const media: IMedia = await mediaService.findByUrl(url);
-    console.log({ media });
-    // if (!media) throw new NotFoundError("Media not found");
-    await deleteFromCloud(media.public_id);
+    // console.log({ media });
+    if (media) await deleteFromCloud(media.public_id);
     await mediaService.deleteByUrl(url);
     res.send(response("Successfully deleted media"));
   }

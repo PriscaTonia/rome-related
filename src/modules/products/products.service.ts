@@ -3,7 +3,7 @@ import { INewProduct, IProduct } from "./products.types";
 import { Query, Document, Types, DocumentQuery } from "mongoose";
 
 class ProductService {
-  getProducts() {
+  getProducts(): DocumentQuery<IProduct[], Document<IProduct[]>> {
     return Product.find();
   }
 
@@ -24,6 +24,12 @@ class ProductService {
     });
   }
 
+  checkExistingCategory(
+    categoryId: string
+  ): DocumentQuery<IProduct[], Document<IProduct[]>> {
+    return Product.find({ category: Types.ObjectId(categoryId) });
+  }
+
   findById(
     id: string
   ): Query<(IProduct & Document) | null, IProduct & Document> {
@@ -40,7 +46,8 @@ class ProductService {
   ): Promise<IProduct & Document> {
     return Product.findByIdAndUpdate(id, updateQuery, { new: true });
   }
-  delete(id: string) {
+  
+  delete(id: string): Promise<IProduct & Document> {
     return Product.findByIdAndDelete(id);
   }
 }

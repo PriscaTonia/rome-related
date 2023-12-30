@@ -11,6 +11,9 @@ import {
 
 router.get("/categories", categoryController.getCategories);
 
+router.get("/categories/id/:id", categoryController.getCategoryById);
+router.get("/categories/:slug", categoryController.getCategoryBySlug);
+
 router.post(
   "/categories",
   [adminAuth, validator(addCategoryValSchema)],
@@ -19,16 +22,14 @@ router.post(
 
 router.put(
   "/categories/:id",
-  [adminAuth, validateById, validator(updateCategoryValSchema)],
+  [adminAuth, validateById(), validator(updateCategoryValSchema)],
   categoryController.update
 );
 
-// router.delete(
-//   "/categories/:id",
-//   [adminAuth, validateById],
-//   categoryController.delete
-// );
-
-router.get("/categories/:slug", categoryController.getCategoryBySlug);
+router.delete(
+  "/categories/:id",
+  [adminAuth, validateById()],
+  categoryController.delete
+);
 
 export default router;

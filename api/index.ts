@@ -23,13 +23,14 @@ const mode = env.NODE_ENV;
 app.use(
   cors({
     origin: [
-      "http://localhost:4000",
-      "http://localhost:4400",
+      "http://localhost:3200",
+      "http://localhost:3600",
       "https://rome-related.co.nz",
       "https://admin.rome-related.co.nz",
     ],
     credentials: true,
     allowedHeaders: [
+      "rr-adm-token",
       "Origin",
       "X-Requested-With",
       "Content-Type",
