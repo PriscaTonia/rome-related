@@ -26,8 +26,6 @@ app.use(
       "http://localhost:3600",
       "https://romerelated.nz",
       "https://admin.romerelated.nz",
-      "https://rome-related-website.vercel.app",
-      "https://rome-related-admin.vercel.app",
     ],
     credentials: true,
     allowedHeaders: [

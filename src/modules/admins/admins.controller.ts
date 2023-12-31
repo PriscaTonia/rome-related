@@ -40,7 +40,7 @@ class AdminController {
 
     res.cookie("rr-adm-token", jwt, env.authCookieConfig);
 
-    res.send(response("Admin login successful", filteredAdmin));
+    res.send(response("Admin login successful"));
   }
 
   async updateAdmin(req: Request, res: Response) {
