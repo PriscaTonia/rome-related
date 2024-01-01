@@ -25,6 +25,7 @@ app.use(
       "http://localhost:3200",
       "http://localhost:3600",
       "https://romerelated.nz",
+      "https://www.romerelated.nz",
       "https://admin.romerelated.nz",
     ],
     credentials: true,
