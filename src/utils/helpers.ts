@@ -42,7 +42,6 @@ export const MediaMimeTypes = [
   "image/*",
   "video/mp4",
   "video/webm",
-  "video/webm",
 ];
 
 export const DocMimeTypes = [
