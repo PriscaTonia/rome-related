@@ -38,10 +38,11 @@ export function getRandomDate(earliestYear = 5, latestYear = 1) {
 export const MediaMimeTypes = [
   "image/jpeg",
   "image/png",
+  "image/webp",
   "image/*",
   "video/mp4",
   "video/webm",
-  "video/webp",
+  "video/webm",
 ];
 
 export const DocMimeTypes = [
