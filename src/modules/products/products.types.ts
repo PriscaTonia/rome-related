@@ -7,6 +7,8 @@ export interface IProduct {
   description: string;
   category: Types.ObjectId;
   brand: string;
+  size: string;
+  condition: string;
   price: number;
   imageUrls: string[];
 }
@@ -24,6 +26,8 @@ export interface IReqProduct {
   title: string;
   description: string;
   brand: string;
+  size: string;
+  condition: string;
   price: number;
   imageUrls: string[];
   category: string;

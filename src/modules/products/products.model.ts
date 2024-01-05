@@ -11,6 +11,22 @@ const productSchema = new Schema<IProduct>(
       maxlength: 255,
       trim: true,
     },
+    size: {
+      type: String,
+      required: true,
+      minlength: 2,
+      maxlength: 255,
+      trim: true,
+      default: "",
+    },
+    condition: {
+      type: String,
+      required: true,
+      minlength: 2,
+      maxlength: 255,
+      trim: true,
+      default: "",
+    },
     isSoldOut: {
       type: Boolean,
       default: false,
