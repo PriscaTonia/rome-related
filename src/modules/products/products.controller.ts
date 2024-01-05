@@ -78,7 +78,7 @@ class ProductController {
       line_items: [
         {
           price_data: {
-            currency: "usd",
+            currency: "nzd",
             product_data: {
               name: product.title,
               description: product.description,

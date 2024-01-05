@@ -8,6 +8,7 @@ import { IMedia } from "./media.types";
 const mediaSchema = new Schema<IMedia>(
   {
     url: { type: String, default: null },
+    duration: { type: Number, default: null },
     size: { type: Number },
     type: { type: String },
     public_id: { type: String },

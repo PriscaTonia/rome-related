@@ -2,6 +2,9 @@ import Media from "./media.model";
 import { IMedia } from "../media/media.types";
 
 class MediaService {
+  findAll() {
+    return Media.find();
+  }
   findByUrl(url: string) {
     return Media.findOne({ url });
   }

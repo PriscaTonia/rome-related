@@ -22,7 +22,7 @@ class MediaController {
     // console.log({ file, url: upload.secure_url, upload });
 
     const media = await mediaService.create({
-      filename: upload.filename,
+      filename: upload.original_filename,
       public_id: upload.public_id,
       size: upload.bytes,
       type: upload.format,

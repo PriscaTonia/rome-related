@@ -19,6 +19,25 @@ export const uploadToCloud = function (filepath: string) {
   );
 };
 
+export async function uploadFileByUrl(imageUrl: string) {
+  const publicId = imageUrl.split("/image/upload/")[1].replace(/[\w_-]*\//, "");
+  try {
+    const result = await cloudinary.uploader.upload(imageUrl, {
+      folder: `${env.CLOUDINARY_FOLDER}/images`,
+      use_filename: true,
+      format: "webp",
+      // public_id: publicId, // Set the public_id to the desired name
+      overwrite: true, // Allow overwriting if a file with the same name exists
+    });
+
+    console.log(`File uploaded successfully: ${result.secure_url}`);
+    return result;
+  } catch (error) {
+    console.error("Error uploading file:", error.message);
+    throw error;
+  }
+}
+
 export const uploadVideoToCloud = function (filepath: string) {
   return cloudinary.uploader.upload(
     filepath,
@@ -48,7 +67,7 @@ export const uploadDocToCloud = function (filepath: string) {
       return { url: result?.secure_url, public_id: result?.public_id };
     }
   );
-}
+};
 
 export const getImageThumbnail = function (uploadResult: any) {
   return cloudinary.url(uploadResult.public_id, {
