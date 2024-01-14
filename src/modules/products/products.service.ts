@@ -48,7 +48,7 @@ class ProductService {
   }
   
   delete(id: string): Promise<IProduct & Document> {
-    return Product.findByIdAndDelete(id);
+    return Product.findByIdAndUpdate(id, { isDeleted: true }, { new: true });
   }
 }
 

@@ -31,6 +31,10 @@ const productSchema = new Schema<IProduct>(
       type: Boolean,
       default: false,
     },
+    isDeleted: {
+      type: Boolean,
+      default: false,
+    },
     category: {
       type: Schema.Types.ObjectId,
       ref: "categories",
